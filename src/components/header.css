@@ -1,0 +1,51 @@
+.header-container{
+    height:10vh;
+    width:100%;
+    background:rgb(255, 255, 255);
+    padding: 0px 0px 0px 35px;
+    display: flex;
+    box-shadow: 0px 5px 10px darkolivegreen;
+
+}
+.navbar{
+    /* position: fixed; */
+width: 60%;
+right:0;
+height: 10vh;
+padding: 0px 35px 0px 0px;
+margin-left: 25%;
+float:right;
+background-color:rgb(0, 0, 0);
+overflow: hidden;
+box-shadow: 0px 5px 10px darkolivegreen;
+border-end-start-radius:100px ;
+}
+.navbar a {
+    float: right;
+    display: flex;
+    padding:15px ;
+    height:70px;
+    min-width: 120px;
+    text-decoration: none;
+    text-align: center;
+    list-style: none;
+    font-size: larger;
+    font-weight: 600;
+    border-end-start-radius:30px ;
+    color:white
+  
+}
+
+.navbar a:hover{
+    background:darkolivegreen;
+    color: white;
+}
+
+.navbar-fix{
+    position:fixed;
+    right:0;
+    width: 50%;
+    background:black;
+    height:50px;
+    overflow:hidden;
+}

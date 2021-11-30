@@ -1,0 +1,16 @@
+
+    "dateScheduled": "10 August 2010",
+    "dueDate": "15 August 2010",
+    "phone": "+250 788 788 788",
+    "price": 300,
+    "user": {
+      "name": "John Smith",
+      "phone": "+250 788 722 722"
+    },
+    "tripDescription":
+    '
+    "title": " Nyungwe Park",
+    "description": "Anim ea aliqua cillum consectetur eiusmod ipsum id eiusmod. Lorem tempor fugiat elit incididunt aliquip minim dolor aute dolore. Dolore dolore pariatur minim id enim in excepteur sit dolor.",
+    "seats": 50,
+    "available": 20,
+    "images":
