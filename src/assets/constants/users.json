@@ -1,0 +1,37 @@
+[
+  {
+    "firstName": "Benjamin",
+    "lastName": "John",
+    "email": "yamu@gmail.com",
+    "phoneNumber": "+250 788 788 788",
+    "address": "Kigali/Rwanda"
+  },
+  {
+    "firstName": "Ben",
+    "lastName": "John",
+    "email": "yamu@gmail.com",
+    "phoneNumber": "+250 788 788 788",
+    "address": "Kigali/Rwanda"
+  },
+  {
+    "firstName": "Alex",
+    "lastName": "John",
+    "email": "yamu@gmail.com",
+    "phoneNumber": "+250 788 788 788",
+    "address": "Kigali/Rwanda"
+  },
+  {
+    "firstName": "Jackson",
+    "lastName": "John",
+    "email": "yamu@gmail.com",
+    "phoneNumber": "+250 788 788 788",
+    "address": "Kigali/Rwanda"
+  },
+  {
+    "firstName": "Benjamin",
+    "lastName": "John",
+    "email": "yamu@gmail.com",
+    "phoneNumber": "+250 788 788 788",
+    "address": "Kigali/Rwanda"
+  }
+]
