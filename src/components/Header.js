@@ -1,23 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 import logo from "../assets/img/logo.png";
+import { Modal, Form, Input, Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [visible, setVisible] = useState(false);
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
+  const navigate = useNavigate();
+
   return (
-    <div className="header-container">  
-      <img src={logo}  width="15%"/>  
+    <>
+      <Modal
+        visible={visible}
+        width="40%"
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+      >
+        <h1>Signin Form </h1>
+        <Form onFinish={onFinish}>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[{ required: true, type: "email" }]}
+          >
+            <Input type="email" />
+          </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true }]}
+          >
+            <Input type="password" />
+          </Form.Item>
+          <Button
+            htmlType="submit"
+            onClick={() => {
+              localStorage.setItem("userLogedIn", true);
 
-      <div className="navbar">
+              navigate("/dash/newtour");
+            }}
+          >
+            {" "}
+            Login{" "}
+          </Button>
+        </Form>
+      </Modal>
+
+      <div className="header-container">
+        <img src={logo} width="15%" />
+
+        <div className="navbar">
           <div className="navbar-fix">
-          <a href="/aboutus"> About Us</a>
-          <a href="/tours"> Tours</a>
-          <a href="#"> Garelly</a>
-          <a href="#"> Signin</a>
-          <a href="/"> Home</a>
-
+            <a href="/aboutus"> About Us</a>
+            <a href="/tours"> Tours</a>
+            <a href="#"> Garelly</a>
+            <a href="#" onClick={() => setVisible(true)}>
+              {" "}
+              Signin
+            </a>
+            <a href="/"> Home</a>
           </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
 import React from "react";
-import DashLayout from "../../components/dashboardLayout";
 import { Form, Input, DatePicker, Space, InputNumber, Button } from "antd";
 
 const NewTourView = () => {
@@ -8,7 +7,6 @@ const NewTourView = () => {
   };
 
   return (
-    <DashLayout>
       <Form onFinish={onFinish}>
         <Form.Item name="title" label="Title" rules={[{ required: true }]}>
           <Input />
@@ -60,7 +58,6 @@ const NewTourView = () => {
           Register Tour
         </Button>
       </Form>
-    </DashLayout>
   );
 };
 

@@ -48,4 +48,5 @@ border-end-start-radius:100px ;
     background:black;
     height:50px;
     overflow:hidden;
+    z-index: 25;
 }
