@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "../views/Home";
 import Aboutus from "../views/Aboutus";
@@ -11,6 +11,9 @@ import AllTours from "../views/dashboard/allTours";
 const isUserLogedIn = localStorage.getItem("userLogedIn");
 
 const Index = () => {
+  const currentUrl = useLocation().pathname;
+
+
   return (
     <>
       <Routes>
@@ -18,7 +21,7 @@ const Index = () => {
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/tours" element={<Tours />} />
       </Routes>
-      {isUserLogedIn ? (
+      {isUserLogedIn && currentUrl.includes("/dash")  ? (
         <DashLayout>
           <Routes>
             <Route path="/dash/newtour" element={<NewTourView />} />

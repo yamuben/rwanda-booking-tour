@@ -7,7 +7,10 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const [visible, setVisible] = useState(false);
   const onFinish = (values) => {
-    console.log(values);
+    // console.log(values);
+
+    localStorage.setItem("userLogedIn", true);
+    navigate("/dash/newtour");
   };
 
   const navigate = useNavigate();
@@ -36,14 +39,7 @@ const Header = () => {
           >
             <Input type="password" />
           </Form.Item>
-          <Button
-            htmlType="submit"
-            onClick={() => {
-              localStorage.setItem("userLogedIn", true);
-
-              navigate("/dash/newtour");
-            }}
-          >
+          <Button htmlType="submit" onClick={() => {}}>
             {" "}
             Login{" "}
           </Button>
