@@ -8,6 +8,7 @@ import NewTourView from "../views/dashboard/NewTour";
 import DashLayout from "../components/dashboardLayout";
 import AllTours from "../views/dashboard/allTours";
 
+import AllUsers from "../components/TableGetAllUsers";
 const isUserLogedIn = localStorage.getItem("userLogedIn");
 
 const Index = () => {
@@ -20,6 +21,7 @@ const Index = () => {
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/tours" element={<Tours />} />
+        <Route path="/allusers" element={<AllUsers />} />
       </Routes>
       {isUserLogedIn && currentUrl.includes("/dash")  ? (
         <DashLayout>

@@ -3,9 +3,11 @@ import "./header.css";
 import logo from "../assets/img/logo.png";
 import { Modal, Form, Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import  SignupUser  from "./SignupUser";
 
 const Header = () => {
-  const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isSignupVisible, setIsSignupVisible] = useState(false);
   const onFinish = (values) => {
     // console.log(values);
 
@@ -18,10 +20,19 @@ const Header = () => {
   return (
     <>
       <Modal
-        visible={visible}
+        visible={isSignupVisible}
+        // width="40%"
+        onOk={() => setIsSignupVisible(false)}
+        onCancel={() => setIsSignupVisible(false)}
+      >
+        <SignupUser />
+      </Modal>
+
+      <Modal
+        visible={isVisible}
         width="40%"
-        onOk={() => setVisible(false)}
-        onCancel={() => setVisible(false)}
+        onOk={() => setIsVisible(false)}
+        onCancel={() => setIsVisible(false)}
       >
         <h1>Signin Form </h1>
         <Form onFinish={onFinish}>
@@ -54,9 +65,13 @@ const Header = () => {
             <a href="/aboutus"> About Us</a>
             <a href="/tours"> Tours</a>
             <a href="#"> Garelly</a>
-            <a href="#" onClick={() => setVisible(true)}>
+            <a href="#" onClick={() => setIsVisible(true)}>
               {" "}
               Signin
+            </a>
+            <a href="#" onClick={() => setIsSignupVisible(true)}>
+              {" "}
+              Signup
             </a>
             <a href="/"> Home</a>
           </div>
