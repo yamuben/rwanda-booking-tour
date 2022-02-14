@@ -36,11 +36,12 @@ const HomeVote = () => {
     <div
       style={{
         top: "0",
-        width: "60%",
+        width: "100%",
         background: "rgba(0, 0, 0, 0.75)",
         bottom: "0",
         padding: "25% 5%",
         minHeight: "100vh",
+        textAlign: "center",
       }}
     >
         <Form onFinish={onFinish} autoComplete="off">
@@ -55,7 +56,7 @@ const HomeVote = () => {
           >
             <Input
               style={{
-                width: "100%",
+                width: "70%",
                 padding: "50px",
                 height: "60px",
                 fontSize: "25px",
@@ -66,7 +67,7 @@ const HomeVote = () => {
           </Form.Item>
           <Button
             style={{
-              width: "100%",
+              width: "70%",
               padding: "15px",
               height: "60px",
               color: "black",
@@ -81,7 +82,7 @@ const HomeVote = () => {
         </Form>
   
     </div>
-      <div
+      {/* <div
         style={{
           background: "#c4c4c4",
           padding:"20px 50px",
@@ -93,7 +94,7 @@ const HomeVote = () => {
         {users.map((user) => (
           <><h3>{user.amazina} :Code <b>{user.code}</b></h3> </>
         ))}
-      </div>
+      </div> */}
       </div>
   );
 };
