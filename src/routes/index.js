@@ -7,6 +7,11 @@ import Tours from "../views/Tours";
 import NewTourView from "../views/dashboard/NewTour";
 import DashLayout from "../components/dashboardLayout";
 import AllTours from "../views/dashboard/allTours";
+import SignupUser from "../components/SignupUser";
+
+
+import HomeVote from "../views/votes/HomeVote";
+import VotePage from "../views/votes/votePage";
 
 import AllUsers from "../components/TableGetAllUsers";
 const isUserLogedIn = localStorage.getItem("userLogedIn");
@@ -14,16 +19,18 @@ const isUserLogedIn = localStorage.getItem("userLogedIn");
 const Index = () => {
   const currentUrl = useLocation().pathname;
 
-
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeVote />} />
+        <Route path="/votepage" element={<VotePage />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/tours" element={<Tours />} />
         <Route path="/allusers" element={<AllUsers />} />
+        <Route path="/signup" element={<SignupUser />} />
       </Routes>
-      {isUserLogedIn && currentUrl.includes("/dash")  ? (
+      {isUserLogedIn && currentUrl.includes("/dash") ? (
         <DashLayout>
           <Routes>
             <Route path="/dash/newtour" element={<NewTourView />} />
