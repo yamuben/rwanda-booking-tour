@@ -6,3 +6,23 @@
   border-radius: 5px;
   text-align: center;
 }
+.voteCardAll{
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  bottom: 0;
+  padding: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap:wrap;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .voteCard {
+    width: 45%;
+  }
+  .voteCardAll{
+    padding: 15px;
+
+  }
+}

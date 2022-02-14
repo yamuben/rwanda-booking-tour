@@ -73,16 +73,7 @@ const VotePage = () => {
       
       </h1>
      <div
-        style={{
-          width: "100%",
-          background: "rgba(0, 0, 0, 0.75)",
-          bottom: "0",
-          padding: "50px",
-          minHeight: "100vh",
-          display: "flex",
-          flexWrap: "wrap",
-          // position: "fixed",
-        }}
+       className="voteCardAll"
       >
         {users.map((user) => (
           <div
