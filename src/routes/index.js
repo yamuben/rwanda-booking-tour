@@ -8,6 +8,7 @@ import NewTourView from "../views/dashboard/NewTour";
 import DashLayout from "../components/dashboardLayout";
 import AllTours from "../views/dashboard/allTours";
 import SignupUser from "../components/SignupUser";
+import UserDashboard from "../views/userDashboard";
 
 
 import HomeVote from "../views/votes/HomeVote";
@@ -29,6 +30,7 @@ const Index = () => {
         <Route path="/tours" element={<Tours />} />
         <Route path="/allusers" element={<AllUsers />} />
         <Route path="/signup" element={<SignupUser />} />
+        <Route path="/user/board" element={<UserDashboard />} />
       </Routes>
       {isUserLogedIn && currentUrl.includes("/dash") ? (
         <DashLayout>
