@@ -1,10 +1,9 @@
 import axios from "axios";
 import store from "store";
-import {notification} from "antd";
+import { notification } from "antd";
 
 // const RWANDA_BOOKING_APIS_URL = "http://localhost:3030";
 const RWANDA_BOOKING_APIS_URL = "https://rwandaapitour.herokuapp.com";
-
 
 var config = {
   headers: {
@@ -14,6 +13,21 @@ var config = {
 };
 
 class Application {
+  async signinAccount(data) {
+    try {
+      const response = await axios.post(
+        RWANDA_BOOKING_APIS_URL + "/user/login",
+        data,
+        config
+      );
+      store.set("x-auth-token", response.data.token);
+      return response;
+    } catch (error) {
+      // console.log(error.response);
+      return error.response;
+    }
+  }
+
   async createAccount(data) {
     try {
       const response = await axios.post(
@@ -74,6 +88,18 @@ class Application {
       return response;
     } catch (error) {}
   }
+  async getVotedUser(id) {
+    try {
+      const response = await axios.get(
+        RWANDA_BOOKING_APIS_URL + "/vote/one/voted/" + id,
+        config
+      );
+
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async VoteUser(data) {
     try {
       const response = await axios.post(
@@ -84,7 +110,8 @@ class Application {
 
       return response;
     } catch (error) {
-     if(error.response.status===400) notification.error({message: "You have arleady voted"})
+      if (error.response.status === 400)
+        notification.error({ message: "You have arleady voted" });
       window.location.reload();
     }
   }

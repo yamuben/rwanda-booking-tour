@@ -1,18 +1,38 @@
 import React, { useState } from "react";
 import "./header.css";
 import logo from "../assets/img/logo.png";
-import { Modal, Form, Input, Button } from "antd";
+import { Modal, Form, Input, Button, notification } from "antd";
 import { useNavigate } from "react-router-dom";
-import  SignupUser  from "./SignupUser";
+import SignupUser from "./SignupUser";
+import tourApiServices from "../services/rwandaBookingApis";
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSignupVisible, setIsSignupVisible] = useState(false);
   const onFinish = (values) => {
-    // console.log(values);
+    console.log(values);
+    tourApiServices.signinAccount(values).then((res) => {
+      if (!res) {
+        return notification.error({
+          message: "Server is down, failed to connect on server",
+        });
+      }
+      if (res.status === 200) {
+        console.log(res.data.data);
 
-    localStorage.setItem("userLogedIn", true);
-    navigate("/dash/newtour");
+        if (res.data.data.role === "admin") {
+          localStorage.setItem("userLogedIn", true);
+          navigate("/dash/newtour");
+        } else if (res.data.data.role === "user") {
+          localStorage.setItem("userLogedIn", true);
+          navigate("/user/board");
+        }
+      } else {
+        return notification.error({
+          message: !res.data.error ? res.data.message : res.data.error,
+        });
+      }
+    });
   };
 
   const navigate = useNavigate();
