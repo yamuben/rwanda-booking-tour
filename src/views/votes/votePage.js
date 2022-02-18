@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import getAllVoteUsersApi from "../../services/rwandaBookingApis";
 import store from "store";
 import { Button, Input, Space, Modal, notification } from "antd";
 import {
   LockOutlined,
-  UnlockOutlined,DownCircleOutlined,
+  UnlockOutlined,
+  DownCircleOutlined,
   DownSquareOutlined,
 } from "@ant-design/icons";
 import "./index.css";
@@ -32,21 +33,37 @@ const VotePage = () => {
     }
   };
 
+  const getOneVotedUser = (id) => {
+    getAllVoteUsersApi.getVotedUser(id).then((res) => {
+      if (!res) {
+        return notification.error({ message: "Failed to get voted user" });
+      } else if (res.status === 200) {
+        setUserVoted(res.data.data.uwatowe);
+        setModalVisible(true);
+        store.set("user", res.data.data.uwatoye);
+      } else {
+        return notification.error({ message: "You have arleady checked!" });
+      }
+    });
+  };
+
   function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
+    let currentIndex = array.length,
+      randomIndex;
+
     // While there remain elements to shuffle...
     while (currentIndex != 0) {
-  
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-  
+
       // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+        array[randomIndex],
+        array[currentIndex],
+      ];
     }
-  
+
     return array;
   }
 
@@ -65,16 +82,46 @@ const VotePage = () => {
           height: "200px",
           padding: "25px",
           color: "white",
-          margin:"0px"
+          margin: "0px",
         }}
       >
-        Ugiye Gutora ni : <b> {userVoter?.amazina}  {userVoter?.yatoye? (<h3 style={{color:"green"}}><DownCircleOutlined /> Watoye.</h3>):(<></>)}</b>
-        <Button onClick={()=>{store.remove("user"); store.remove("x-auth-token" ); navigate("/")}}>Logout</Button>
-      
+        Ugiye Gutora ni :{" "}
+        <b>
+          {" "}
+          {userVoter?.amazina}{" "}
+          {userVoter?.yatoye ? (
+            <h3 style={{ color: "green" }}>
+              <DownCircleOutlined /> Watoye.
+            </h3>
+          ) : (
+            <></>
+          )}
+        </b>
+        <Space>
+          {!userVoter.recheck &&
+          (userVoter.code === "0006" || userVoter.code === "0004"|| userVoter.code === "0020"|| userVoter.code === "0030") ? (
+            <Button
+              onClick={() => {
+                getOneVotedUser(userVoter._id);
+              }}
+            >
+              Recheck
+            </Button>
+          ) : (
+            <></>
+          )}
+          <Button
+            onClick={() => {
+              store.remove("user");
+              store.remove("x-auth-token");
+              navigate("/");
+            }}
+          >
+            Logout
+          </Button>
+        </Space>
       </h1>
-     <div
-       className="voteCardAll"
-      >
+      <div className="voteCardAll">
         {users.map((user) => (
           <div
             className="voteCard"

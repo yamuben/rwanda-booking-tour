@@ -20,7 +20,7 @@ class Application {
         data,
         config
       );
-      store.set("x-auth-token",response.data.token);
+      store.set("x-auth-token", response.data.token);
       return response;
     } catch (error) {
       // console.log(error.response);
@@ -87,6 +87,18 @@ class Application {
 
       return response;
     } catch (error) {}
+  }
+  async getVotedUser(id) {
+    try {
+      const response = await axios.get(
+        RWANDA_BOOKING_APIS_URL + "/vote/one/voted/" + id,
+        config
+      );
+
+      return response;
+    } catch (error) {
+      return error.response;
+    }
   }
   async VoteUser(data) {
     try {
