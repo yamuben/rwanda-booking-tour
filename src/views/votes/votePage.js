@@ -99,7 +99,7 @@ const VotePage = () => {
         </b>
         <Space>
           {!userVoter.recheck &&
-          (userVoter.code === "0006" || userVoter.code === "0004"|| userVoter.code === "0020"|| userVoter.code === "0030") ? (
+          (userVoter.code === "0006" || userVoter.code === "0013"|| userVoter.code === "0020"|| userVoter.code === "0030") ? (
             <Button
               onClick={() => {
                 getOneVotedUser(userVoter._id);
